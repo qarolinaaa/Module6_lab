@@ -1,0 +1,31 @@
+@baseUrl = http://localhost:5000
+
+### GET all tasks (no token)
+GET {{baseUrl}}/api/tasks
+
+### GET task by ID (no token)
+GET {{baseUrl}}/api/tasks/1
+
+### Login and get JWT
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "student",
+  "password": "12345"
+}
+
+### Create task (replace YOUR_TOKEN with token from login response)
+POST {{baseUrl}}/api/tasks
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN
+
+{
+  "title": "Подготовить отчёт",
+  "description": "Сделать скриншоты проверки JWT.",
+  "isCompleted": false
+}
+
+### Delete task (replace YOUR_TOKEN and ID)
+DELETE {{baseUrl}}/api/tasks/3
+Authorization: Bearer YOUR_TOKEN
